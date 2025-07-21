@@ -1,0 +1,361 @@
+/* Base styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000;
+  color: #b2f2bb; /* Soft green text for good contrast */
+  overflow-x: hidden;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #111;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #28a745;
+  box-sizing: border-box;
+  position: static;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  margin-bottom: 40px;
+  color: #28a745;
+}
+
+.sidebar-link {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #28a745;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #218838;
+}
+
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.sidebar-buttons button {
+  padding: 10px;
+  background-color: #28a745;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar-buttons button:hover {
+  background-color: #218838;
+}
+
+/* Payroll Form Container */
+.payroll-form-container {
+  background: #111;
+  padding: 30px;
+  max-width: 960px;
+  margin: auto;
+  box-shadow: 0 0 15px #28a74555;
+  border: 1px solid #28a745;
+  border-radius: 10px;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Headings */
+h3 {
+  border-bottom: 2px solid #28a74588;
+  padding-bottom: 8px;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #28a745;
+}
+
+/* Form layout */
+#payrollForm {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  row-gap: 12px;
+  column-gap: 20px;
+  align-items: center;
+}
+
+#payrollForm label {
+  font-weight: bold;
+  color: #28a745;
+}
+
+#payrollForm input,
+#payrollForm textarea {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  border: 1px solid #28a74555;
+  border-radius: 4px;
+  background: #222;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#payrollForm input[readonly],
+#payrollForm textarea[readonly] {
+  background-color: #333;
+  color: #b2f2bb;
+}
+
+#payrollForm textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Custom label input styling */
+.custom-label-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-column: 2 / 3;
+}
+
+.custom-label-input .label-input {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #28a745;
+  border: 1px solid #28a74555;
+  border-radius: 4px;
+  background: #222;
+}
+
+.custom-label-input input[type="number"] {
+  width: 120px;
+  text-align: right;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Group for totals and remarks */
+.total-salary-group {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  column-gap: 15px;
+  row-gap: 10px;
+  margin-top: 20px;
+}
+
+/* Section titles */
+.section-divider {
+  grid-column: 1 / -1;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 10px 0;
+  margin-top: 30px;
+  border-bottom: 2px solid #28a74588;
+  color: #28a745;
+}
+
+/* Buttons */
+.button-group {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.print-btn {
+  background-color: #17a2b8; /* Teal for contrast */
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+#dateCovered {
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #28a745;
+  }
+
+  #payrollForm {
+    grid-template-columns: 1fr;
+  }
+
+  .custom-label-input {
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .custom-label-input .label-input,
+  .custom-label-input input[type="number"] {
+    width: 100%;
+  }
+
+  .section-divider,
+  .button-group,
+  .total-salary-group {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    padding: 40px;
+    margin: 0;
+    color: black;
+    font-family: Arial, sans-serif;
+  }
+
+  .dashboard-container,
+  .sidebar,
+  .sidebar-buttons,
+  .button-group,
+  .save-btn,
+  .print-btn,
+  h3 {
+    display: none !important;
+  }
+
+  .payroll-form-container {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border: none;
+  }
+
+  #payrollForm::before {
+    content: "PAY VOUCHER";
+    display: block;
+    text-align: left;
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  #payrollForm {
+    display: block;
+    font-size: 12pt;
+    padding: 0;
+    margin: 0;
+    color: black;
+  }
+
+  .print-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .print-row .left {
+    width: 50%;
+  }
+
+  .print-row .right {
+    width: 45%;
+    text-align: right;
+  }
+
+  .section-divider {
+    display: block;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    border-bottom: 1px solid #000;
+    font-size: 13pt;
+  }
+
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  input,
+  textarea {
+    border: none;
+    background: none;
+    color: black;
+    padding: 0;
+    margin: 0;
+    font-size: 11pt;
+  }
+
+  textarea {
+    white-space: pre-wrap;
+    resize: none;
+    overflow: visible;
+  }
+
+  .custom-label-input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .custom-label-input .label-input {
+    font-weight: bold;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+}

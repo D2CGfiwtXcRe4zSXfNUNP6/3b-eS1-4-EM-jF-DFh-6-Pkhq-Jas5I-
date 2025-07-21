@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payroll Analytics Dashboard</title>
+  <link rel="stylesheet" href="analytics.css" />
+
+  <!-- Flatpickr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+
+  <!-- ✅ Hamburger -->
+  <button class="hamburger" id="hamburgerBtn">☰</button>
+
+  <!-- ✅ Sidebar -->
+  <div class="analytics-container">
+    <aside class="sidebar" id="sidebar">
+      <h2>📊 Analytics</h2>
+      <a href="dashboard.html" class="sidebar-link">🏠 Employee Dashboard</a>
+      <a href="viewPayrolls.html" class="sidebar-link">📋 Payroll Dashboard</a>
+      <a href="EMS.html" class="sidebar-link" target="_blank">🗂️ Records</a>
+    </aside>
+
+    <main class="main-content">
+      <h1>Payroll Analytics Dashboard</h1>
+
+      <div class="filters">
+        <label for="filterMode">Filter Mode:</label>
+        <select id="filterMode">
+          <option value="cutoff">Per Cut-off</option>
+          <option value="monthly">Monthly Range</option>
+          <option value="annual">Annual Total</option>
+        </select>
+
+        <label for="fromDate">From:</label>
+        <input type="text" id="fromDate" placeholder="Select start date">
+
+        <label for="toDate">To:</label>
+        <input type="text" id="toDate" placeholder="Select end date">
+
+        <label for="employeeSelect">Employee:</label>
+        <select id="employeeSelect">
+          <option value="all">All Employees</option>
+        </select>
+
+        <button id="applyFilter">Apply Filter</button>
+      </div>
+
+      <div id="summary">
+        <div class="summary-box">
+          <h3>Total Payrolls</h3>
+          <p id="payrollCount">0</p>
+        </div>
+        <div class="summary-box">
+          <h3>Total Gross Payroll</h3>
+          <p id="totalGross">₱0.00</p>
+        </div>
+        <div class="summary-box">
+          <h3>Total Deductions</h3>
+          <p id="totalDeductions">₱0.00</p>
+        </div>
+        <div class="summary-box">
+          <h3>Total Net Payroll</h3>
+          <p id="totalNet">₱0.00</p>
+        </div>
+        <div class="summary-box">
+          <h3>Total Money Released</h3>
+          <p id="totalReleased">₱0.00</p>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <h3>Overall Net Salary Over Time</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+
+      <div class="chart-section">
+        <h3>Net Salary Trends by Employee</h3>
+        <canvas id="employeeLineChart"></canvas>
+      </div>
+
+      <div class="chart-section">
+        <h3>Net Salary Breakdown by Employee</h3>
+        <canvas id="pieChart"></canvas>
+      </div>
+    </main>
+  </div>
+
+  <!-- ✅ Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-database-compat.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Flatpickr -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script src="analytics.js"></script>
+
+  <!-- ✅ Hamburger Toggle Script -->
+  <script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('show');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+  </script>
+</body>
+</html>

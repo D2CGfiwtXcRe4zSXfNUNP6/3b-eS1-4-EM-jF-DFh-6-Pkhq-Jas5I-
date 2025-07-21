@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Employees</title>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAI1Qh4eL5xS5w6_cqKA1iN8fFaCrddw8o",
+      authDomain: "ravi-payroll.firebaseapp.com",
+      databaseURL: "https://ravi-payroll-default-rtdb.firebaseio.com",
+      projectId: "ravi-payroll",
+      storageBucket: "ravi-payroll.appspot.com",
+      messagingSenderId: "228526283867",
+      appId: "1:228526283867:web:39cc6d842bb2b991be737e"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const employees = [
+      { name: "MELVIN CUARE TAYTAYON", id: "08012022-03", rate: 961.54, sss: 900.00, siteAllowance: 600.00, foodAllowance: 700.00 },
+      { name: "BARTOLOME RIVERO BANTOG JR.", id: "01032024-15", rate: 769.93, sss: 720.00, siteAllowance: 400.00, foodAllowance: 700.00 },
+      { name: "REMEGIO VILLIANA ROCHA", id: "07012023-07", rate: 769.93, sss: 720.00, siteAllowance: 0.00, foodAllowance: 700.00 },
+      { name: "ENRIQUE FLOR JAVIER JR.", id: "01032024-14", rate: 650.00, sss: 720.00, siteAllowance: 0.00, foodAllowance: 700.00 },
+      { name: "JUAN CARLO REFORMA CASTRO", id: "01032024-13", rate: 650.00, sss: 0.00, siteAllowance: 0.00, foodAllowance: 700.00 },
+      { name: "JESSIE VITUG LOZADA JR.", id: "01032024-17", rate: 769.23, sss: 0.00, siteAllowance: 200.00, foodAllowance: 700.00 },
+      { name: "MARVIN DEL MUNDO ROCHA", id: "01032024-18", rate: 650.00, sss: 0.00, siteAllowance: 0.00, foodAllowance: 0.00 },
+      { name: "FRENCES MANIPON CARPIO", id: "03252025-35", rate: 650.00, sss: 0.00, siteAllowance: 0.00, foodAllowance: 0.00 },
+      { name: "ANGELITO REYES VALMORIA", id: "01032024-32", rate: 650.00, sss: 0.00, siteAllowance: 0.00, foodAllowance: 0.00 },
+      { name: "EUGENE CUARE TAYTAYON", id: "01032024-33", rate: 769.23, sss: 0.00, siteAllowance: 0.00, foodAllowance: 700.00 },
+      { name: "NOLI ESCOTA", id: "03252025-34", rate: 650.00, sss: 0.00, siteAllowance: 0.00, foodAllowance: 0.00 },
+      { name: "ROLANDO VILLIANA ROCHA", id: "05302025-34", rate: 692.31, sss: 0.00, siteAllowance: 0.00, foodAllowance: 700.00 },
+      { name: "DOMINIC OCTUBRE RAMOS", id: "01032024-27", rate: 650.00, sss: 0.00, siteAllowance: 0.00, foodAllowance: 0.00 }
+    ];
+
+    // Convert array to object with unique keys (e.g., employee ID)
+    const employeeData = {};
+    employees.forEach(emp => {
+      employeeData[emp.id] = emp;
+    });
+
+    // Save to Firebase
+    set(ref(db, 'employees'), employeeData).then(() => {
+      alert("Employees uploaded successfully!");
+    }).catch(error => {
+      console.error("Error uploading:", error);
+    });
+  </script>
+</head>
+<body>
+  <h2>Uploading Employees...</h2>
+</body>
+</html>

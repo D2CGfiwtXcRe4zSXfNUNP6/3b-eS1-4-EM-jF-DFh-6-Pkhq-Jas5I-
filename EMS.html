@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Payroll Management</title>
+  <link rel="stylesheet" href="EMS.css" />
+</head>
+<body>
+  <h1>Employee Payroll Management System</h1>
+
+  <div id="notification" class="notification"></div>
+
+  <div class="container">
+    <div class="section">
+      <h2>Add/Edit Employee</h2>
+      <form id="employeeForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="id">Employee ID</label>
+          <input type="text" id="id" required />
+        </div>
+
+        <div class="form-group">
+          <label for="rate">Daily Rate (₱)</label>
+          <input type="number" id="rate" step="0.01" required />
+        </div>
+
+        <div class="form-group">
+          <label for="sss">SSS Contribution (₱)</label>
+          <input type="number" id="sss" step="0.01" value="0" />
+        </div>
+
+        <div class="form-group">
+          <label for="siteAllowance">Site Allowance (₱)</label>
+          <input type="number" id="siteAllowance" step="0.01" value="0" />
+        </div>
+
+        <div class="form-group">
+          <label for="foodAllowance">Food Allowance (₱)</label>
+          <input type="number" id="foodAllowance" step="0.01" value="0" />
+        </div>
+
+        <div class="action-buttons">
+          <button type="submit" id="saveBtn" class="btn-success">Save Employee</button>
+          <button type="button" id="clearBtn" class="btn-danger">Clear Form</button>
+          <button type="button" id="cancelEditBtn">Cancel Edit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="section">
+      <h2>Employee List</h2>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search employees..." />
+        <button id="searchBtn">Search</button>
+      </div>
+      <div style="overflow-x: auto;">
+        <table id="employeeTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>ID</th>
+              <th>Daily Rate</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Employee data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="EMS.js"></script>
+</body>
+</html>

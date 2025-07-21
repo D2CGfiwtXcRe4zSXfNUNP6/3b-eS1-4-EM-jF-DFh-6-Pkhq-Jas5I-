@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payroll Form</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="payroll.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>🔒 Vault</h2>
+      <a href="dashboard.html" class="sidebar-link">📋 Employee Dashboard</a>
+      <a href="viewPayrolls.html" class="sidebar-link">📋 Payroll Dashboard</a>
+      <a href="EMS.html" class="sidebar-link" target="_blank">🗂️ Records</a>
+      <div class="sidebar-buttons">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+  <div class="payroll-form-container">
+    <form id="payrollForm">
+      <h3>Payroll Form</h3>
+
+      <div class="table-like">
+        <label for="dateReleased">Date Released:</label>
+        <input type="date" id="dateReleased" name="dateReleased" required>
+
+        <label for="employeeName">Employee Name:</label>
+        <input type="text" id="employeeName" name="employeeName">
+
+        <label for="dateCovered">Date Covered:</label>
+        <input type="text" id="dateCovered" name="dateCovered" placeholder="Select date range" required>
+
+        <label for="idNumber">ID No:</label>
+        <input type="text" id="idNumber" name="idNumber">
+      </div>
+
+      <h3>Breakdown of Wages</h3>
+      <div class="breakdown-columns">
+        <!-- Column 1: Salary components -->
+        <div class="column">
+          <label for="ratePerDay">Rate per Day:</label>
+          <input type="number" id="ratePerDay" name="ratePerDay" step="any">
+
+          <label for="daysWorked">Number of Days:</label>
+          <input type="number" id="daysWorked" name="daysWorked" step="any">
+
+          <label for="subTotal">Sub-total Salary:</label>
+          <input type="number" id="subTotal" name="subTotal" step="0.01">
+        <h3>Add Ons</h3>  
+          <div class="custom-label-input">
+            <input type="text" id="addon1Label" value="Sunday" class="label-input">
+            <input type="number" id="sunday" name="sunday">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="addon2Label" value="Overtime" class="label-input">
+            <input type="number" id="overtime" name="overtime" step="any">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="addon3Label" value="Holiday" class="label-input">
+            <input type="number" id="holiday" name="holiday">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="addon4Label" value="Site Allowance" class="label-input">
+            <input type="number" id="siteAllowance" name="siteAllowance">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="addon5Label" value="Food Allowance" class="label-input">
+            <input type="number" id="foodAllowance" name="foodAllowance">
+          </div>
+        </div>
+
+        <!-- Column 2: Deductions -->
+        <h3>Deductions</h3>
+        <div class="column">
+          <div class="custom-label-input">
+            <input type="text" id="deduction1Label" value="Phil Health" class="label-input">
+            <input type="number" id="philHealth" name="philHealth">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="deduction2Label" value="PAG-IBIG" class="label-input">
+            <input type="number" id="pagibig" name="pagibig">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="deduction3Label" value="SSS" class="label-input">
+            <input type="number" id="sss" name="sss">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="deduction4Label" value="Loan" class="label-input">
+            <input type="number" id="loan" name="loan">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="deduction5Label" value="Cash Advance" class="label-input">
+            <input type="number" id="cashAdvance" name="cashAdvance">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="deduction6Label" value="Under Time" class="label-input">
+            <input type="number" id="underTime" name="underTime">
+          </div>
+
+          <div class="custom-label-input">
+            <input type="text" id="deduction7Label" value="Late" class="label-input">
+            <input type="number" id="late" name="late">
+          </div>
+
+          <!-- Total salary under 'Late' -->
+          <div class="total-salary-group">
+            <label for="totalSalary">Total Salary:</label>
+            <input type="number" id="totalSalary" name="totalSalary" step="any">
+
+            <label for="totalDeductions">Total Deductions:</label>
+            <input type="number" id="totalDeductions" name="totalDeductions" step="any">
+
+            <label for="netSalary">Net Salary:</label>
+            <input type="number" id="netSalary" name="netSalary" step="any">
+            <label for="remarks">Remarks:</label>
+            <textarea id="remarks" name="remarks" rows="3"></textarea>
+            <button type="submit" class="save-btn">Save Payroll</button>
+            <button type="button" id="cancelEditBtn" class="print-btn" style="display:none;">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-database-compat.js"></script>
+  <script src="payroll.js"></script>
+</body>
+</html>

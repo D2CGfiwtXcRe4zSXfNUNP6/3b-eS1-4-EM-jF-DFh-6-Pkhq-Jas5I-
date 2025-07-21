@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="sidebar-content">
+        <h2>🔒 Vault</h2>
+        <a href="viewPayrolls.html" class="sidebar-link">📋 Payroll Dashboard</a>
+        <a href="analytics.html" class="sidebar-link" target="_blank">📊 Analytics</a>
+        <a href="EMS.html" class="sidebar-link" target="_blank">🗂️ Records</a>
+        <div class="sidebar-buttons">
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <main class="main-content">
+      <header class="dashboard-header">
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+        <div class="employee-counter">
+          Total Employees: <span id="employeeCount">0</span>
+        </div>
+      </header>
+
+      <h1>Welcome to Your Payroll Dashboard</h1>
+      <p>This is a payroll area. Ravi Modular Cabinet.</p>
+
+      <h1>Employee Payroll</h1>
+      <input type="text" id="searchBox" placeholder="Search employee..." />
+
+      <table id="employeeTable">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>ID No.</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <!-- Firebase SDK & your dashboard JS -->
+  <script type="module" src="dashboard.js"></script>
+  <script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('overlay');
+
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('show');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+  </script>
+</body>
+</html>
