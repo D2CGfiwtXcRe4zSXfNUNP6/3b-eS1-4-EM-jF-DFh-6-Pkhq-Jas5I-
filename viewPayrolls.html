@@ -9,16 +9,22 @@
 </head>
 <body>
 
+  <!-- ✅ Hamburger -->
+  <button class="hamburger" id="hamburgerBtn">☰</button>
+
   <!-- ✅ Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <h2>📁 Menu</h2>
     <a href="dashboard.html">🏠 Employee Dashboard</a>
     <a href="analytics.html">📊 Analytics</a>
     <a href="EMS.html" class="sidebar-link" target="_blank">🗂️ Records</a>
   </div>
 
+  <!-- ✅ Overlay -->
+  <div class="overlay" id="overlay"></div>
+
   <!-- ✅ Main Content -->
-  <div class="container">
+  <main class="container">
     <h1>📄 Payroll Records</h1>
 
     <div class="controls">
@@ -33,7 +39,7 @@
 
     <div id="payrollContainer"></div>
     <div id="paginationControls" class="pagination"></div>
-  </div>
+  </main>
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>

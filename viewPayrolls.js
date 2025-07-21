@@ -1,12 +1,12 @@
 // // Firebase config
 // const firebaseConfig = {
-//   apiKey: "",
-//   authDomain: "",
-//   databaseURL: "",
-//   projectId: "",
-//   storageBucket: "",
-//   messagingSenderId: "",
-//   appId: ""
+//   apiKey: "AIzaSyAI1Qh4eL5xS5w6_cqKA1iN8fFaCrddw8o",
+//   authDomain: "ravi-payroll.firebaseapp.com",
+//   databaseURL: "https://ravi-payroll-default-rtdb.firebaseio.com",
+//   projectId: "ravi-payroll",
+//   storageBucket: "ravi-payroll.appspot.com",
+//   messagingSenderId: "228526283867",
+//   appId: "1:228526283867:web:39cc6d842bb2b991be737e"
 // };
 
 // firebase.initializeApp(firebaseConfig);
@@ -246,13 +246,13 @@
 // Firebase config
 // Firebase config
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyAI1Qh4eL5xS5w6_cqKA1iN8fFaCrddw8o",
+  authDomain: "ravi-payroll.firebaseapp.com",
+  databaseURL: "https://ravi-payroll-default-rtdb.firebaseio.com",
+  projectId: "ravi-payroll",
+  storageBucket: "ravi-payroll.appspot.com",
+  messagingSenderId: "228526283867",
+  appId: "1:228526283867:web:39cc6d842bb2b991be737e"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -726,4 +726,19 @@ document.addEventListener("DOMContentLoaded", () => {
   dateFilter.addEventListener("change", () => { currentPage = 1; filterAndDisplayPayrolls(); });
   printAllBtn.addEventListener("click", printAllVouchers);
   document.getElementById("printByDateBtn").addEventListener("click", printPayrollsByDateReleased);
+});
+
+// ✅ Hamburger toggle for sidebar
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+hamburgerBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
+});
+
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
 });
