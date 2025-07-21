@@ -335,7 +335,7 @@ const formatCurrencyForPrint = (value, isNetPay = false) => {
   
   card.innerHTML = `
     <div style="display: flex; align-items: center; margin-bottom: 3mm; border-bottom: 1px solid rgb(0, 0, 0); padding-bottom: 2mm;">
-      <img src="https://imgur.com/HNoPMDF" style="height: 25mm; width: auto; margin-right: 5mm;">
+      <img src="https://imgur.com/a/jVAqqxr" style="height: 25mm; width: auto; margin-right: 5mm;">
       <div>
         <div style="font-size: 11pt; font-weight: bold; margin-bottom: 1mm; color: #007bff;">PAY VOUCHER: ${payroll.voucherNumber || "—"}</div>
         <div style="font-size: 10pt; color: #333;">DATE RELEASED: ${payroll.dateReleased || ""}</div>
