@@ -9,19 +9,13 @@
 </head>
 <body>
 
-  <!-- ✅ Hamburger -->
-  <button class="hamburger" id="hamburgerBtn">☰</button>
-
   <!-- ✅ Sidebar -->
-  <div class="sidebar" id="sidebar">
+  <div class="sidebar">
     <h2>📁 Menu</h2>
     <a href="dashboard.html">🏠 Employee Dashboard</a>
     <a href="analytics.html">📊 Analytics</a>
     <a href="EMS.html" class="sidebar-link" target="_blank">🗂️ Records</a>
   </div>
-
-  <!-- ✅ Overlay -->
-  <div class="overlay" id="overlay"></div>
 
   <!-- ✅ Main Content -->
   <div class="container">
@@ -47,22 +41,5 @@
 
   <!-- Main Script -->
   <script src="viewPayrolls.js"></script>
-
-  <script>
-    const hamburger = document.getElementById('hamburgerBtn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-
-    hamburger.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      overlay.classList.toggle('show');
-    });
-
-    overlay.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('show');
-    });
-  </script>
-
 </body>
 </html>
